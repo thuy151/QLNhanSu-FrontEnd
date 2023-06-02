@@ -1,0 +1,2 @@
+export const SAVE_POSITIONS = 'SAVE_POSITIONS';
+

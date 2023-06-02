@@ -1,0 +1,260 @@
+
+.dashboard-container {
+    padding: 16px;
+    margin-bottom: 8px;
+    color: #FFFFFF;
+    // border: 1px solid gray;
+    // border: 1px solid $cool-gray-200;
+    // box-shadow: 0px 1px 2px rgba(31, 41, 55, 0.08);
+    box-shadow: 0 0 0.781vw rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    min-height: 545px;
+
+    &.info {
+        color: var(--btnInfoColor);
+        background: var(--btnInfoBg);
+        border: 1px solid var(--btnInfoBorder);
+        &:hover {
+            background: var(--btnInfoHoverBg);
+        }
+        &:active {
+            background: var(--btnInfoHoverBg);
+        }
+    
+    }
+    &.success {
+        color: var(--btnSuccessColor);
+        background: var(--btnSuccessBg);
+        border: 1px solid var(--btnSuccessBorder);
+        &:hover {
+            background: var(--btnSuccessHoverBg);
+        }
+        &:active {
+            background: var(--btnSuccessHoverBg);
+        }
+    }
+    &.danger {
+        color: var(--btnDangerColor);
+        background: var(--btnDangerBg);
+        border: 1px solid var(--btnDangerBorder);
+        &:hover {
+            background: var(--btnDangerHoverBg);
+        }
+        &:active {
+            background: var(--btnDangerHoverBg);
+        }
+    }
+    &.warning {
+        color: var(--btnWarningColor);
+        background: var(--btnWarningBg);
+        border: 1px solid var(--btnWarningBorder);
+        &:hover {
+            background: var(--btnWarningHoverBg);
+        }
+        &:active {
+            background: var(--btnWarningHoverBg);
+        }
+    }
+
+    .content-title {
+        color:var(--colorHeader);
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .ant-list-item {
+        padding: 12px 0;
+    }
+
+    .ant-empty-1 {
+        margin: 220px 8px !important
+    }
+
+    .circle {
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+        border-radius: 50%;
+        // color: $blue-600;
+        color: blue;
+        // background: $blue-100;
+        background: blue;
+    }
+
+    .ant-typography {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: red;
+        // color: $indigo-600;
+
+        svg path {
+            fill: red;
+            // fill: $indigo-600;
+        }
+
+        &:hover {
+            // color: $blue-600;
+            color: blue;
+
+            svg path {
+                // fill: $blue-600;
+                fill: blue;
+            }
+        }
+
+    }
+
+    .ant-select-selector::before {
+        align-self: center;
+        margin-right: 4px;
+    }
+
+    .unit-selector {
+        .ant-select-selector::before {
+            content: 'Đơn vị :';
+        }
+    }
+
+    .year-selector {
+        .ant-select-selector::before {
+            content: 'Năm ';
+        }
+    }
+
+    .field-selector {
+
+        // width: 150px;
+        .ant-select-selector::before {
+            content: 'Lĩnh vực :';
+        }
+    }
+
+    .pie-chart {
+        position: relative;
+    }
+
+    .bodyLengndChart {
+        padding: 0 32px;
+    }
+
+    .pie-chart-legend {
+        display: flex;
+        justify-content: center;
+
+        .recharts-legend-wrapper {
+            position: unset !important;
+            bottom: 0;
+
+            ul {
+                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+
+                li {
+                    width: 30%;
+                    padding: 0 10px;
+                    margin: 10px 0px;
+                }
+            }
+        }
+    }
+
+    .dashboard-tag-wrapper{
+        height: 90%;
+        cursor: pointer;
+        svg{
+            width: auto;
+            height: 30px;
+            path{
+                fill: white;
+            }
+        }
+        .title{
+            color: white;
+            margin: 8px 0;
+            font-weight: 300;
+        }
+        .total{
+            color: white;
+            font-size: 12px;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .footer{
+            display: flex;
+            div{
+                min-width: $px16;
+                padding: $px4 $px8;
+                &+div{
+                    margin-left: $px8;
+                }
+                &.first{
+                    background-color: rgb(42, 159, 232);
+                }
+                &.second{
+                    background-color: rgb(238, 108, 108);
+                }
+            }
+        }
+    }
+}
+
+
+.local-noti {
+    .ant-list-item {
+        justify-content: normal;
+    }
+}
+
+.recharts-legend-wrapper {
+    position: relative !important
+}
+
+// customize tooltip for barcharts
+.custom-tooltip {
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 16px 16px 8px 16px;
+    font-size: 14px;
+    color: gray;
+    // color: $cool-gray-700;
+    position: relative;
+    border: none;
+
+    .label {
+        text-align: center;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #FFFFFF;
+        // border: none;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -9px;
+    }
+}
+
+// .home-innerinfo {
+//     max-height: 50px;
+//     overflow-y: scroll;
+// }
+
+.hederBarChart .recharts-surface {
+    width: 160px !important;
+}
+
+.spanChart .tspan {
+    width: 30px;
+}

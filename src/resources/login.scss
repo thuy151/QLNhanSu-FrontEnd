@@ -1,0 +1,274 @@
+.login-container {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  //background: url("images/login/background-login.jpg") center center;
+  background-size: cover;
+
+  .login-box {
+    background: linear-gradient(141.2deg, rgba(217, 217, 217, 0.3) -4.06%, rgba(217, 217, 217, 0) 52.3%, rgba(217, 217, 217, 0.3) 100%);
+    border-radius: 20px;
+    padding: 20px 40px;
+    width: 450px;
+
+    .style-size-logo {
+      height: $px100;
+      margin-bottom: -$px8;
+      width: auto;
+    }
+
+    .txt-title {
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 22px;
+      margin-bottom: 15px;
+      margin-top: 30px;
+    }
+
+    .txt-welcome {
+      color: #fff;
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .ant-input-affix-wrapper {
+      background: rgba(217, 217, 217, 0.2);
+      border: 1px solid #BDBDBD;
+      border-radius: 5px;
+      height: 45px;
+      padding-left: 21px;
+      .ant-input {
+        background: transparent;
+        color: #fff;
+        font-size: 18px;
+        &::placeholder {
+          color: #A0A0A0;
+        }
+        &:-webkit-autofill {
+          transition-delay: 9999s;
+          transition-property: background-color, color;
+        }
+      }
+      .ant-input-suffix {
+        svg {
+          color: #fff;
+        }
+      }
+    }
+
+    .ant-select {
+      .ant-select-selector {
+        background: rgba(217, 217, 217, 0.2);
+        border: 1px solid #BDBDBD;
+        border-radius: 5px;
+        .ant-select-selection-item {
+          color: #fff;
+        }
+      }
+      .ant-select-arrow {
+        svg {
+          color: #fff;
+        }
+      }
+    }
+
+    .ant-checkbox-wrapper {
+      color: #fff;
+    }
+
+    .btn-login {
+      border-radius: 22.5px;
+      width: 100%;
+      background: #F2994A;
+      height: 45px;
+      font-size: 18px;
+    }
+
+  }
+}
+
+.ant-modal.modal-change-password{
+  .ant-modal-title{
+    text-align: center;
+  }
+  .ant-modal-footer{
+    justify-content: center;
+  }
+
+  .avic-form {
+    .ant-form-item-label {
+      width: $px275;
+      text-align: left;
+    }
+    .password-error{
+      color: #F43F5E; 
+      margin-top: $px4;
+      font-size: $px16;
+    }
+    .password-condition-active{
+      color: #0d9488;
+      svg path{
+        fill: #0d9488;
+      }
+    }
+    .password-condition-error{
+      color: #e11d48;
+      svg path{
+        fill: #e11d48;
+      }
+    }
+    .form-btn-container {
+      padding-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    &#change-password{
+      .ant-form-item{
+        margin-bottom: $px12;
+        .ant-input-clear-icon{
+          margin-inline-end: $px8;
+          margin: 0 $px8;
+          font-size: $px12;
+          vertical-align: -$px1;
+        }
+      }
+      .ant-form-item-label {
+        padding: 0;
+        >label{
+          color: #6B7280;
+          font-size: 0.833vw;
+          font-weight: 400;
+          height: 1.667vw;
+        }
+      }
+      .ant-form-item-explain-error{
+        font-size: $px16;
+      }
+      .ant-form-item-control-input{
+        min-height: $px35;
+        height: $px35;
+      }
+      .ant-input-password{
+        height: $px35;
+        background: var(--commonInputBg);
+        color: var(--commonInputColor);
+        font-size: 0.729vw;
+        padding: 0.208vw 0.625vw;
+        border-radius: 0.625vw;
+        border-bottom-right-radius: 0;
+        font-weight: 400;
+      }
+      .change-password-condition{
+        .change-password-condition-title{
+          font-size: $px16;
+          font-weight: 500;
+        }
+        .ant-list-item{
+          font-size: $px16;
+          padding: $px12 $px24;
+          svg{
+            margin-right: $px8;
+            width: $px18;
+            height: $px18;
+          }
+        }
+        input{ 
+          font-size: $px16;
+        }
+        .avic-btn.ant-btn{
+          min-width: $px90;
+          width: $px90;
+        }
+      }
+    }
+  }
+
+  
+  // .avic-form{
+  //   .ant-form-item-label {
+  //     width: $px275;
+  //     text-align: left;
+  //   }
+  //   .password-error{
+  //     color: #F43F5E;
+  //     margin-top: $px4;
+  //     font-size: $px16;
+  //   }
+  //   .password-condition-active{
+  //     color: #0d9488;
+  //     svg path{
+  //       fill: #0d9488;
+  //     }
+  //   }
+  //   .password-condition-error{
+  //     color: #e11d48;
+  //     svg path{
+  //       fill: #e11d48;
+  //     }
+  //   }
+  //   .form-btn-container {
+  //     padding-top: 40px;
+  //     display: flex;
+  //     justify-content: center;
+  //   }
+  //   &#change-password{
+  //     .ant-form-item{
+  //       margin-bottom: $px12;
+  //       .ant-input-clear-icon{
+  //         margin-inline-end: $px8;
+  //         margin: 0 $px8;
+  //         font-size: $px12;
+  //         vertical-align: -$px1;
+  //       }
+  //     }
+  //     // .ant-form-item-label {
+  //     //   padding: 0;
+  //     //   >label{
+  //     //     color: #6B7280;
+  //     //     font-size: 0.833vw;
+  //     //     font-weight: 400;
+  //     //     height: 1.667vw;
+  //     //   }
+  //     // }
+  //     .ant-form-item-required {
+  //       position: relative;
+  //       &:before {
+  //         display: block !important;
+  //         position: absolute;
+  //         right: -$px20;
+  //         font-size: $px14;
+  //       }
+  //     }
+  //     .ant-form-item-explain-error{
+  //       font-size: $px14;
+  //     }
+  //     .ant-form-item-control-input{
+  //       min-height: $px40;
+  //       height: $px40;
+  //     }
+  //     .ant-input-password{
+  //       height: $px40;
+  //       background: var(--commonInputBg);
+  //       color: var(--commonInputColor);
+  //       font-size: $px14;
+  //       padding: $px4 $px12;
+  //       font-weight: 400;
+  //     }
+  //     .change-password-condition{
+  //       .ant-list-item{
+  //         font-size: $px12;
+  //         padding: $px6 0;
+  //         svg{
+  //           margin-right: $px8;
+  //           width: $px18;
+  //           height: $px18;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

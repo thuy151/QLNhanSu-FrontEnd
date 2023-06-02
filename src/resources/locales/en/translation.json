@@ -1,0 +1,511 @@
+{
+    "validate": {
+        "required": "Không được để trống!",
+        "usernameRequired": "Vui lòng nhập tên đăng nhập!",
+        "passwordRequired": "Vui lòng nhập mật khẩu!",
+        "fullNameRequired": "Vui lòng nhập họ và tên!",
+        "phoneNumberFormat": "Số điện thoại chỉ được nhập số!",
+        "emailFormat": "Không đúng định dạng email!",
+        "input": "Vui lòng nhập",
+        "select": "Vui lòng chọn",
+        "onlyNumberOrLetter": "chỉ gồm chữ hoặc số"
+    },
+
+    "common": {
+        "time": "Thời gian",
+        "day": "Ngày",
+        "days": "Ngày",
+        "minute": "Phút",
+        "morning": "Chào buổi sáng",
+        "afternoon": "Chào buổi chiều",
+        "evening": "Chào buổi tối",
+        "pagination": "trên tổng số",
+        "button": {
+            "cancel": "Hủy",
+            "addNew": "Thêm mới",
+            "action": "Thao tác",
+            "edit": "Chỉnh sửa",
+            "Edit": "Sửa",
+            "update": "Cập nhật",
+            "remove": "Xóa",
+            "close": "Đóng",
+            "accept": "Đồng ý",
+            "confirm": "Xác nhận",
+            "save": "Lưu",
+            "changePass": "Đổi mật khẩu",
+            "deleteCondition": "Xóa điều kiện",
+            "showResults": "Hiển thị kết quả",
+            "exportExcel": "Xuất Excel",
+            "reset": "Đặt lại",
+            "search": "Tìm kiếm",
+            "actionBtn": "Thao tác",
+            "approval": "Phê duyệt",
+            "refuse": "Từ chối",
+            "success": "Hoàn thành",
+            "detail": "Chi tiết"
+        },
+        "fromDate": "Từ ngày",
+        "toDate": "Đến ngày",
+        "confirmAction": "Bạn có chắc muốn tiếp tục thao tác này?",
+        "editDataAction": "Bạn đang có hành động chỉnh sửa dữ liệu, hủy bỏ chỉnh sửa và tiếp túc thao tác.",
+        "dataNotFound": "Không tìm thấy dữ liệu"
+    },
+
+    "commonError": {
+        "oopsSystem": "Có lỗi xảy ra vui lòng liên hệ kỹ thuật để được hỗ trợ."
+    },
+
+    "layout": {
+        "header": {
+            "title": "HỆ THỐNG QUẢN LÝ NHÂN SỰ OSP GROUP",
+            "personalInfo": "Thông tin cá nhân",
+            "changePassword": "Đổi mật khẩu",
+            "logout": "Đăng xuất"
+        },
+        "sidebar": {
+            "menu":{
+                "home": "Trang chủ",
+                "personalInfo": "Thông tin cá nhân",
+                "accountManagement": "Quản lý tài khoản",
+                "permissionManagement": "Quản lý nhóm quyền"
+            },
+            "tabs":{
+                "mapTab": "Bản đồ",
+                "categoryTab": "Danh mục",
+                "positionCategory": "Danh mục Vị trí",
+                "vehicleTypeCategory": "Danh mục Loại xe",
+                "lockCategory": "Danh mục Khóa",
+                "notifyTab": "Thông báo",
+                "systemManagementTab": "QTHT",
+                "systemManagementTitle": "Quản trị hệ thống"
+            }
+        }
+    },
+
+    "login": {
+        "title": "HỆ THỐNG QUẢN LÝ NHÂN SỰ OSP GROUP",
+        "welcome": "Chào mừng đến với",
+        "usernamePlaceholder": "Tên đăng nhập",
+        "passwordPlaceholder": "Mật khẩu",
+        "rememberLabel": "Duy trì đăng nhập",
+        "submit": "Đăng nhập",
+        "wrongPassword": "Thông tin đăng nhập không chính xác"
+    },
+
+    "vehicleRegistrationPage":{
+        "title": "Bản đồ xe vào SEV",
+        "list":{
+            "total": "Tổng số",
+            "vehicle": "xe",
+            "violation": "Vi phạm",
+            "lockStatus": "Trạng thái khóa",
+            "lockWarning": "Cảnh báo khóa",
+            "dateInSEV": "Ngày vào SEV",
+            "warehousesNumber": "Số kho đăng ký"
+        },
+        "searchBox":{
+            "title": "Bộ lọc",
+            "label":{
+                "status": "Trạng thái",
+                "lockStatus": "Trạng thái khóa",
+                "lockWarning": "Cảnh báo khóa",
+                "violationVehicle": "Xe vi phạm",
+                "notViolationVehicle": "Xe không vi phạm",
+                "unconfirmedVehicle": "Xe đã gán IMEI mà chưa xác nhận",
+                "dateInSEV": "Ngày vào SEV"
+            },
+            "placeholder":{
+                "plateNumber": "Nhập biển số",
+                "status": "Chọn trạng thái",
+                "lockStatus": "Chọn trạng thái khóa",
+                "lockWarning": "Chọn cảnh báo khóa"
+            }
+        },
+        "form":{
+            "createTitle": "Tạo mới thông tin đăng ký xe vào SEV",
+            "detailTitle": "Chi tiết thông tin đăng ký xe vào SEV",
+            "editTitle": "Chỉnh sửa thông tin đăng ký xe vào SEV",
+            "total": "Tổng số",
+            "warehouses": "kho",
+            "label":{
+                "plateNumber": "Biển số xe",
+                "vehicleType": "Loại xe",
+                "gateIn": "Cổng vào",
+                "dateInSEV": "Ngày vào SEV",
+                "infoPosition": "Thông tin thứ tự Vị trí giao/ nhận hàng",
+                "status": "Trạng thái",
+                "lockStatus": "Trạng thái khóa",
+                "lockWarning": "Cảnh báo khóa",
+                "violationInfo": "Thông tin vi phạm",
+                "unlockPosition": "Mở khóa cho xe (tại Vị trí giao/ nhận hàng xe đang có mặt)",
+                "orderDeliveryPositionInfo": "Thông tin thứ tự Vị trí giao/ nhận hàng",
+                "timeInSEV": "Thời gian trong SEV"
+            },
+            "placeholder":{
+                "plateNumber": "Nhập hoặc chọn biển số xe",
+                "vehicleType": "Chọn loại xe",
+                "gateIn": "Chọn cổng vào",
+                "dateInSEV": "Chọn ngày vào SEV",
+                "deliveryPosition": "Chọn tòa nhà - vị trí trong tòa nhà"
+            },
+            "validate":{
+                "plateNumber": "Vui lòng chọn hoặc nhập Biển số xe",
+                "vehicleType": "Vui lòng chọn Loại xe",
+                "gateIn": "Vui lòng chọn Cổng vào",
+                "dateInSEV": "Vui lòng chọn Ngày vào SEV",
+                "infoPosition": "Vui lòng chọn đầy đủ Thông tin thứ tự Vị trí giao/ nhận hàng",
+                "infoPositionIsNull": "Thông tin thứ tự Vị trí giao/ nhận hàng là bắt buộc"
+            },
+            "message":{
+                "createSuccess": "Thêm mới Đăng ký vào SEV thành công!",
+                "editSuccess": "Chỉnh sửa thông tin Đăng ký vào SEV thành công!"
+            },
+            "list":{
+                "STT": "STT",
+                "action": "Xử lý",
+                "deliveryPosition": "Tên Vị trí giao/ nhận hàng",
+                "orderDeliveryPosition": "Thứ tự Vị trí giao/ nhận hàng",
+                "route": "Lộ trình",
+                "time": "Thời gian",
+                "account": "Tài khoản",
+                "note": "Ghi chú"
+            }
+        }
+    },
+
+    "positionPage":{
+        "title": "Danh mục Vị trí",
+        "total": "Tổng số",
+        "position": "vị trí",
+        "searchBox":{
+            "placeholder":{
+                "building": "Tòa nhà",
+                "position": "Vị trí",
+                "status": "Trạng thái"
+            }
+        },
+        "form":{
+            "createTitle": "Tạo mới Vị trí giao hàng",
+            "editTitle": "Chỉnh sửa Vị trí giao hàng",
+            "label":{
+                "buildingName": "Tên tòa nhà",
+                "position": "Vị trí",
+                "status": "Trạng thái"
+            },
+            "placeholder":{
+                "buildingName": "Nhập tên tòa nhà",
+                "position": "Nhập vị trí",
+                "status": "Chọn trạng thái"
+            },
+            "validate":{
+                "buildingName": "Vui lòng nhập Tên tòa nhà",
+                "position": "Vui lòng nhập Vị trí",
+                "status": "Vui lòng chọn Trạng thái"
+            },
+            "message":{
+                "createSuccess": "Thêm mới Vị trí giao/ nhận hàng thành công!",
+                "editSuccess": "Chỉnh sửa thông tin Vị trí giao/ nhận hàng thành công!"
+            }
+        }
+    },
+
+    "vehicleTypePage":{
+        "title": "Danh mục Loại xe",
+        "total": "Tổng số",
+        "vehicleType": "loại xe",
+        "searchBox":{
+            "placeholder":{
+                "vehicleType": "Nhập loại xe",
+                "status": "Trạng thái"
+            }
+        },
+        "form":{
+            "createTitle": "Tạo mới Loại xe",
+            "editTitle": "Chỉnh sửa thông tin Loại xe",
+            "label":{
+                "vehicleTypeName": "Tên loại xe",
+                "time": "Thời gian",
+                "status": "Trạng thái"
+            },
+            "placeholder":{
+                "vehicleTypeName": "Nhập tên loại xe",
+                "time": "Nhập số phút",
+                "status": "Chọn trạng thái"
+            },
+            "validate":{
+                "vehicleTypeName": "Vui lòng nhập Tên loại xe",
+                "time": "Vui lòng nhập Thời gian",
+                "timeOnlyNumber": "Thời gian chỉ được nhập số!",
+                "status": "Vui lòng chọn Trạng thái"
+            },
+            "message":{
+                "createSuccess": "Thêm mới Loại xe thành công!",
+                "editSuccess": "Chỉnh sửa thông tin Loại xe thành công!"
+            }
+        }
+    },
+
+    "lockPage":{
+        "title": "Danh mục Khóa",
+        "total": "Tổng số",
+        "lock": "khóa",
+        "searchBox":{
+            "placeholder":{
+                "IMEI": "Nhập số IMEI",
+                "status": "Trạng thái",
+                "condition": "Tình trạng",
+                "warning": "Cảnh báo"
+            }
+        },
+        "form":{
+            "createTitle": "Tạo mới Khóa",
+            "detailTitle": "Chi tiết thông tin Khóa",
+            "editTitle": "Chỉnh sửa thông tin Khóa",
+            "total": "Tổng số",
+            "warehouses": "kho",
+            "label":{
+                "IMEI": "Số IMEI",
+                "lockInfo": "Thông tin gán khóa với xe cố định (nếu có)",
+                "plateNumber": "Biển số xe",
+                "companyName": "Tên công ty",
+                "driverName": "Tên lái xe",
+                "phone": "Số sim",
+                "status": "Trạng thái",
+                "lockStatus": "Tình trạng khóa",
+                "lockWarning": "Cảnh báo khóa",
+                "orderDeliveryPositionInfo": "Thông tin thứ tự Vị trí giao/ nhận hàng"
+            },
+            "placeholder":{
+                "IMEI": "Nhập số IMEI",
+                "plateNumber": "Nhập biển số xe",
+                "companyName": "Nhập  tên công ty",
+                "driverName": "Nhập  tên lái xe",
+                "phone": "Nhập số sim"
+            },
+            "validate":{
+                "IMEI": "Vui lòng nhập Số IMEI",
+                "IMEIDontSpace": "Số IMEI không chứa khoảng trắng!",
+                "phone": "Không đúng định dạng số điện thoại!"
+            },
+            "message":{
+                "createSuccess": "Thêm mới Khóa thành công!",
+                "editSuccess": "Chỉnh sửa thông tin Khóa thành công!"
+            },
+            "list":{
+                "STT": "STT",
+                "detail": "Xem chi tiết",
+                "dateInSEV": "Ngày vào SEV",
+                "status": "Trạng thái"
+            }
+        }
+    },
+
+    "notifyPage":{
+        "title": "Thông Báo",
+        "total": "Tổng số",
+        "notify": "thông báo",
+        "searchBox":{
+            "placeholder":{
+                "plateNumber": "Nhập biển số xe",
+                "notifyType": "Chọn loại thông báo",
+                "status": "Chọn trạng thái"
+            }
+        }
+    },
+    
+    "profilePage":{
+        "accountProfileTab":{
+            "title": "Chi tiết tài khoản",
+            "label":{
+                "fullName": "Họ và Tên",
+                "userName": "Tài khoản",
+                "department": "Phòng ban",
+                "roles": "Nhóm quyền",
+                "email": "Email",
+                "phoneNumber": "Số điện thoại",
+                "modifiedDate": "Ngày cập nhật"
+            },
+            "placeholder":{
+                "fullName": "Nhập họ và tên",
+                "userName": "Nhập tài khoản",
+                "department": "Chọn phòng ban",
+                "roles": "Chọn nhóm quyền",
+                "email": "Nhập email",
+                "phoneNumber": "Nhập số điện thoại",
+                "modifiedDate": "Ngày cập nhật"
+            }
+        },
+        "changePasswordTab":{
+            "title": "Đổi mật khẩu",
+            "label":{
+                "currentPassword": "Mật khẩu hiện tại",
+                "newPassword": "Mật khẩu mới",
+                "reNewPassword": "Nhập lại mật khẩu mới",
+                "requirementNewPassword": "Yêu cầu mật khẩu mới"
+            },
+            "placeholder":{
+                "currentPassword": "Nhập mật khẩu hiện tại",
+                "newPassword": "Nhập mật khẩu mới",
+                "reNewPassword": "Xác nhận mật khẩu mới"
+            },
+            "validate":{
+                "currentPassword": "Vui lòng nhập mật khẩu hiện tại",
+                "newPassword": "Vui lòng nhập mật khẩu mới",
+                "reNewPassword": "Vui lòng xác nhận mật khẩu mới",
+                "mismatched": "Không khớp với mật khẩu mới"
+            },
+            "condition":{
+                "atLeast8Chars" : "Ít nhất 8 kí tự",
+                "atLeast1Uppercase" : "Ít nhất 1 kí tự viết hoa",
+                "atLeast1Number" : "Ít nhất 1 số"
+            }
+        },
+        "messageConfirm": "Bạn có chắc chắn muốn hủy bỏ và không lưu dữ liệu vừa nhập?"
+    },
+    
+    "permissionsPage": {
+        "searchBox": {
+            "title": "Thông tin chung",
+            "label": {
+                "name": "Tên nhóm quyền",
+                "status": "Trạng thái hoạt động",
+                "modifiedBy": "Người cập nhật lần cuối",
+                "modifiedDate": "Ngày cập nhật lần cuối",
+                "advancedSearch": "Tìm kiếm nâng cao"
+            },
+            "placeholder": {
+                "name": "Nhập tên nhóm quyền",
+                "status": "Chọn trạng thái hoạt động",
+                "modifiedBy": "Nhập người cập nhật lần cuối",
+                "advancedSearch": "Nội dung tìm kiếm"
+            }
+        },
+        "list": {
+            "title": "Danh sách nhóm quyền",
+            "columns":{
+                "STT": "STT",
+                "roleName": "Tên nhóm quyền",
+                "modifiedDate": "Ngày cập nhật",
+                "modifiedBy": "Người cập nhật",
+                "status": "Trạng thái"
+            }
+        },
+        "form": {
+            "createTitle": "Thêm mới nhóm quyền",
+            "detailTitle": "Thông tin nhóm quyền",
+            "infoBoxTitle": "Thông tin chung",
+            "permissionBoxTitle": "Phân quyền chức năng",
+            "label": {
+                "name": "Tên nhóm quyền",
+                "description": "Mô tả",
+                "status": "Trạng thái hoạt động",
+                "categoryPosition": "Vị trí kho",
+                "categoryPositionGateIn": "Cổng vào",
+                "categoryPositionGateOut": "Cổng ra"
+            },
+            "placeholder": {
+                "name": "Nhập tên nhóm quyền",
+                "description": "Nhập mô tả",
+                "status": "Chọn trạng thái hoạt động",
+                "categoryPosition": "Chọn vị trí kho (tòa nhà - vị trí)",
+                "categoryPositionGateIn": "Chọn cổng vào",
+                "categoryPositionGateOut": "Chọn cổng ra"
+            },
+            "validate": {
+                "name": "Vui lòng nhập Tên nhóm quyền.",
+                "status": "Vui lòng chọn Trạng thái.",
+                "categoryPosition": "Vui lòng chọn Vị trí kho",
+                "categoryPositionGateIn": "Vui lòng chọn Cổng vào",
+                "categoryPositionGateOut": "Vui lòng chọn Cổng ra"
+            },
+            "message":{
+                "permissionRequired": "Phân quyền chức năng không được bỏ trống.",
+                "createSuccess": "Thêm nhóm quyền thành công!",
+                "updateSuccess": "Cập nhật thông tin nhóm quyền thành công!"
+            }
+        },
+        "changeStatus": "Đổi trạng thái",
+        "status": {
+            "inactive": "Không hoạt động",
+            "active": "Hoạt động"
+        }
+    },
+
+    "accountPage": {
+        "searchBox": {
+            "title": "Thông tin chung",
+            "label": {
+                "name": "Họ tên",
+                "username": "Tên tài khoản",
+                "modifiedBy": "Người cập nhật lần cuối",
+                "modifiedDate": "Ngày cập nhật lần cuối",
+                "status": "Trạng thái hoạt động",
+                "advancedSearch": "Tìm kiếm nâng cao"
+            },
+            "placeholder": {
+                "name": "Nhập họ tên",
+                "username": "Nhập tên tài khoản",
+                "modifiedBy": "Nhập người cập nhật lần cuối",
+                "advancedSearch": "Nội dung tìm kiếm",
+                "status": "Chọn trạng thái hoạt động"
+            }
+        },
+        "list": {
+            "title": "Danh sách tài khoản",
+            "columns":{
+                "STT": "STT",
+                "username": "Tên tài khoản",
+                "name": "Họ tên",
+                "email": "Email",
+                "groups": "Nhóm quyền",
+                "modifiedDate": "Ngày cập nhật",
+                "modifiedBy": "Người cập nhật",
+                "status": "Trạng thái"
+            }
+        },
+        "form": {
+            "createTitle": "Thêm mới tài khoản",
+            "detailTitle": "Thông tin tài khoản",
+            "infoBoxTitle": "Thông tin chung",
+            "permissionBoxTitle": "Phân quyền chức năng",
+            "label": {
+                "name": "Họ tên",
+                "username": "Tài khoản",
+                "password": "Mật Khẩu",
+                "email": "Email",
+                "phoneNumber": "Số điện thoại",
+                "dateOfBirth": "Ngày sinh",
+                "groups": "Nhóm quyền",
+                "status": "Trạng thái hoạt động"
+            },
+            "placeholder": {
+                "name": "Nhập họ tên",
+                "username": "Nhập tài khoản",
+                "password": "Nhập mật Khẩu",
+                "email": "Nhập email",
+                "dateOfBirth": "Chọn ngày sinh",
+                "phoneNumber": "Nhập số điện thoại",
+                "groups": "Chọn nhóm quyền"
+            },
+            "validate": {
+                "name": "Vui lòng nhập họ tên",
+                "username": "Vui lòng nhập tài khoản",
+                "password": "Vui lòng nhập mật Khẩu",
+                "email": "Vui lòng nhập email",
+                "phoneNumber": "Không đúng định dạng số điện thoại",
+                "groups": "Vui lòng chọn nhóm quyền"
+            },
+            "message":{
+                "createSuccess": "Thêm tài khoản thành công!",
+                "updateSuccess": "Cập nhật thông tin tài khoản thành công!",
+                "changePasswordSuccess": "Thay đổi mật khẩu thành công. Vui lòng đăng nhập lại.",
+                "changePasswordSuccess1": "Thay đổi mật khẩu thành công."
+            }
+        },
+        "changeStatus": "Đổi trạng thái",
+        "status": {
+            "inactive": "Không hoạt động",
+            "active": "Hoạt động"
+        }
+    }
+}

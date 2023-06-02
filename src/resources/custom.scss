@@ -1,0 +1,83 @@
+.ant-table-body {
+  overflow-y: auto !important;
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+  }
+}
+
+.noti-container {
+  .ant-badge-count {
+    top: $px5;
+    right: $px5;
+  }
+
+  svg {
+    width: $px30;
+    height: $px30;
+
+    path {
+      fill: var(--sidebarContentTextColor1);
+    }
+  }
+}
+
+.header-avatar {
+  width: $px50;
+  height: $px50;
+  line-height: $px50;
+}
+
+.header-language {
+  width: $px30;
+  height: $px30;
+  line-height: $px30;
+}
+
+.header-language-dropdown-item {
+  width: $px20;
+  height: $px20;
+  line-height: $px20;
+  margin-right: $px10;
+}
+
+.page-sidebar-container {
+  width: 100%;
+  height: 100%;
+  padding: $px8;
+}
+
+.ant-tabs .ant-tabs-content {
+  height: 100%;
+
+  .ant-tabs-tabpane {
+    height: 100%;
+  }
+}
+
+.employee-report-table.avic-table{
+  th{
+    border: $px1 solid white !important;
+    &::before{
+      display: none !important;
+    }
+  }
+}

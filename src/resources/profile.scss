@@ -1,0 +1,198 @@
+.profile-page {
+  //box-shadow: 0 0 $px24 rgba(0, 0, 0, 0.1);
+  //border-radius: $px7;
+  margin-top: $px4;
+  padding-right: $px8;
+  .profile-page-sidebar {
+    box-shadow: 0 0 $px10 rgba(0, 0, 0, 0.1);
+    padding-top: $px20;
+    border-radius: $px7 $px7 0 0;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+
+    .profile-info {
+      color: #334D6E;
+
+      .profile-info-title {
+        font-size: $px26;
+        line-height: $px30;
+        font-weight: 500;
+        margin-bottom: $px5;
+      }
+      .profile-info-full-name {
+        font-size: $px26;
+        line-height: $px30;
+        font-weight: 600;
+        margin-bottom: $px5;
+        text-align: center;
+      }
+      .profile-info-role {
+        font-size: $px16;
+        line-height: $px28;
+        font-weight: 400;
+        text-align: center;
+        padding-bottom: $px30;
+      }
+      .profile-info-row {
+        font-size: $px16;
+        line-height: $px28;
+        font-weight: 500;
+        border: 1px solid #F1F1F1;
+        padding: $px18 $px24;
+        .profile-info-account-label {
+          width: $px110;
+          display: inline-block;
+          font-weight: 400;
+          color: #6B7280;
+        }
+      }
+    }
+
+  }
+
+  .profile-body {
+    padding: $px20 $px50;
+    box-shadow: 0 0 $px10 rgba(0, 0, 0, 0.1);
+    border-radius: $px7;
+    background: #fff;
+
+    .ant-tabs-nav{
+      margin: 0 0 $px16 0;
+      &::before{
+        border-bottom: $px1 solid rgba(5, 5, 5, 0.06);
+      }
+    }
+
+    .ant-tabs-tab {
+      font-size: $px16;
+      font-weight: 500;
+      padding: $px12 0;
+      &+.ant-tabs-tab {
+          margin: 0 0 0 $px32;
+      }
+    }
+    
+    .ant-form-item-label{
+      padding: 0 0 $px8;
+      line-height: 0;
+    }
+
+    .ant-tabs-ink-bar.ant-tabs-ink-bar-animated{
+      height: $px2 !important;
+    }
+
+    .profile-tab-content {
+      padding-top: $px20;
+      .profile-tab-content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $px20;
+
+        .profile-tab-content-header-left {
+          font-size: $px18;
+          font-weight: 600;
+        }
+        .profile-tab-content-header-right {
+          //svg {
+          //  width: $px24;
+          //}
+          .anticon {
+            font-size: $px24;
+          }
+        }
+      }
+
+      .avic-form {
+        .ant-form-item-label {
+          width: $px275;
+          text-align: left;
+        }
+        .password-error{
+          color: #F43F5E; 
+          margin-top: $px4;
+          font-size: $px16;
+        }
+        .password-condition-active{
+          color: #0d9488;
+          svg path{
+            fill: #0d9488;
+          }
+        }
+        .password-condition-error{
+          color: #e11d48;
+          svg path{
+            fill: #e11d48;
+          }
+        }
+        .form-btn-container {
+          padding-top: 40px;
+          display: flex;
+          justify-content: center;
+        }
+        &#change-password{
+          .ant-form-item{
+            margin-bottom: $px12;
+            .ant-input-clear-icon{
+              margin-inline-end: $px8;
+              margin: 0 $px8;
+              font-size: $px12;
+              vertical-align: -$px1;
+            }
+          }
+          .ant-form-item-label {
+            padding: 0;
+            >label{
+              color: #6B7280;
+              font-size: 0.833vw;
+              font-weight: 400;
+              height: 1.667vw;
+            }
+          }
+          .ant-form-item-explain-error{
+            font-size: $px16;
+          }
+          .ant-form-item-control-input{
+            min-height: $px35;
+            height: $px35;
+          }
+          .ant-input-password{
+            height: $px35;
+            background: var(--commonInputBg);
+            color: var(--commonInputColor);
+            font-size: 0.729vw;
+            padding: 0.208vw 0.625vw;
+            border-radius: 0.625vw;
+            border-bottom-right-radius: 0;
+            font-weight: 400;
+          }
+          .change-password-condition{
+            .change-password-condition-title{
+              font-size: $px16;
+              font-weight: 500;
+            }
+            .ant-list-item{
+              font-size: $px16;
+              padding: $px12 $px24;
+              svg{
+                margin-right: $px8;
+                width: $px18;
+                height: $px18;
+              }
+            }
+            input{ 
+              font-size: $px16;
+            }
+            .avic-btn.ant-btn{
+              min-width: $px90;
+              width: $px90;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
