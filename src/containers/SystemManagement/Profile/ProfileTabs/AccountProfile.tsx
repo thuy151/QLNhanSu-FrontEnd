@@ -67,6 +67,7 @@ function AccountProfile (props:any, ref:any) {
             phoneNumber: values?.phoneNumber,
             email: values?.email,
             cccd: employeeDetail?.cccd,
+            hsl: employeeDetail?.hsl,
             gender: employeeDetail?.gender,
             permanentAddress: employeeDetail?.permanentAddress,
             insuranceCode: employeeDetail?.insuranceCode,

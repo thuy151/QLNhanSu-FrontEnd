@@ -120,6 +120,7 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
             permanentAddress: values?.permanentAddress,
             insuranceCode: values?.insuranceCode,
             education: values?.education,
+            hsl: values?.hsl,
             name: values?.name,
             status: values?.status,
             address: values?.address,
@@ -265,6 +266,7 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
                     gender: currentEmployee ? currentEmployee?.gender : 0,
                     permanentAddress: currentEmployee?.permanentAddress,
                     insuranceCode: currentEmployee?.insuranceCode,
+                    hsl: currentEmployee?.hsl,
                     education: currentEmployee?.education,
                     name: currentEmployee?.name,
                     status: currentEmployee ? currentEmployee?.status : true,
@@ -486,6 +488,19 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
                                 />
                             </Col> :<></>
                         }
+                        <Col span={12}>
+                            <CommonFormItem
+                                name="hsl"
+                                label={t('Hệ số lương')}
+                                placeholder={t('Nhập hệ số lương') as string}
+                                rules={[
+                                    {required: true, message: t('Vui lòng nhập Hệ số lương') as string }
+                                ]}
+                                showRequiredIcon={true}
+                                type="inputNumber"
+                                min={1.0}
+                            />
+                        </Col>
                         <Col span={12}>
                             <CommonFormItem
                                 name="status"

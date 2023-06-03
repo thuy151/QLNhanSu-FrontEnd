@@ -125,6 +125,21 @@ function Salary() {
             render: (cell: any, record: any, index: number) =>  cell?.position?.name
         },
         {
+            title: t("Phụ cấp"),
+            dataIndex: 'employee',
+            key: 'allowance',
+            align: "center",
+            sorter: true,
+            render: (cell: any, record: any, index: number) =>  `${cell?.position?.allowance}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+        },
+        {
+            title: t("Hệ số lương"),
+            dataIndex: 'employee',
+            key: 'hsl',
+            align: "center",
+            render: (cell: any, record: any, index: number) =>  cell?.hsl
+        },
+        {
             title: t("Tháng"),
             dataIndex: 'month',
             key: 'month',

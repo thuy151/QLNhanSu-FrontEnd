@@ -138,6 +138,14 @@ function Employee() {
             render: (cell: any, record: any, index: number) => cell?.name,
         },
         {
+            title: t("Hệ số lương"),
+            dataIndex: 'hsl',
+            key: 'hsl',
+            sorter: true,
+            align: "center",
+            
+        },
+        {
             title: t("Số CCCD"),
             dataIndex: 'cccd',
             key: 'cccd',
@@ -292,7 +300,7 @@ function Employee() {
                 dataSource={data?.content || []}
                 columns={columns}
                 data={data}
-                scroll={{ x: 2200 }}
+                scroll={{ x: 2400 }}
                 onChange={onPageChange}
                 loading={isLoading}
                 defaultSorter={{

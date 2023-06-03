@@ -55,6 +55,12 @@ function ProfileSidebar() {
                 </div>
                 <div className='profile-info-row'>
                     <div>
+                        <span className='profile-info-account-label'>{t('Hệ số lương')}</span>
+                        <span className='profile-info-account-value'>{employeeDetail?.hsl}</span>
+                    </div>
+                </div>
+                <div className='profile-info-row'>
+                    <div>
                         <span className='profile-info-account-label'>{t('profilePage.accountProfileTab.label.phoneNumber')}</span>
                         <span className='profile-info-account-value'>{employeeDetail?.phoneNumber}</span>
                     </div>

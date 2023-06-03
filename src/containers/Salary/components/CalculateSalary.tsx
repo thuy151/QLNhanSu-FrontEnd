@@ -12,13 +12,16 @@ import CommonFormEditor from '../../../components/Common/FormEditor';
 import employeeServices from "../../../services/employees.service";
 import salaryServices from "../../../services/salaries.service";
 import contractServices from "../../../services/contracts.service";
+import { useWatch } from 'antd/es/form/Form';
 
 function CalculateSalary(props: any) {
     const { t } = useTranslation();
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const [employeeList, setEmployeeList] = useState<any[]>([]);
+    const [dataList, setDateList] = useState<any[]>([]);
     const [checkContract, setCheckContract] = useState<number[]>([]);
+    const empIdWatch = useWatch('empId', form);
 
     const getData = useCallback(async () => {
         const paramsSearch = {
@@ -30,11 +33,12 @@ function CalculateSalary(props: any) {
         const data = resp?.data;
 
         if (resp?.status === 200) {
-            setEmployeeList(data?.content
-                                    ?.filter((item:any)=>item.status===true && checkContract.includes(item?.id))
-                                        ?.map((item:any)=>({value: item.id, label: item.name})))
+            const newData:any[] = data?.content?.filter((item:any)=>item.status===true && checkContract.includes(item?.id));
+            setDateList(newData)
+            setEmployeeList(newData?.map((item:any)=>({value: item.id, label: item.name})))
         } else {
-            setEmployeeList([])
+            setEmployeeList([]);
+            setDateList([])
         }
     },[checkContract])
 
@@ -61,6 +65,11 @@ function CalculateSalary(props: any) {
         getData();
     },[getData])
 
+    useEffect(()=>{
+        const currentEmp = dataList?.find((item:any)=>item?.id === empIdWatch)
+        form.setFieldValue("hsl",currentEmp?.hsl)
+    },[dataList, empIdWatch,form])
+
     const onFinish = (values: any) => {
         handleCalculate(values);
     }
@@ -72,6 +81,7 @@ function CalculateSalary(props: any) {
             year: moment(values?.calculateDate).year(), 
         }
         delete body?.calculateDate;
+        delete body?.hsl;
         console.log(body)
         const resp = await salaryServices.createSalary(body);
         const data = resp.data;
@@ -115,6 +125,15 @@ function CalculateSalary(props: any) {
                                     showRequiredIcon
                                     type="select"
                                     options={employeeList}
+                                />
+                            </Col>
+                            <Col span={24}>
+                                <CommonFormItem
+                                    name="hsl"
+                                    label="Hệ số lương"
+                                    placeholder={"Hệ số lương tự động fill"}
+                                    type="inputNumber"
+                                    disabled={true}
                                 />
                             </Col>
                             <Col span={24} style={{zIndex: 100}}>

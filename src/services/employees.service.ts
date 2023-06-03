@@ -13,6 +13,7 @@ export interface EmployeeAddParams {
     gender: string,
     permanentAddress: string,
     insuranceCode: string,
+    hsl: number,
     education: string,
     name: string,
     status: boolean,
