@@ -19,7 +19,7 @@ const convertData = (data: any, currentYear: any) => { // hàm convert data th�
     Array.from({length: 2}, (_, item) => { // có 2 loại nhân viên nên length =2
         let newItemData:any = {};
         newItemData["id"] = item;
-        newItemData["employee"] = item?"Chính thưc":"Thử việc";
+        newItemData["employee"] = item?"Chính thức":"Thử việc";
         Array.from({length: 12}, (_, i) => { // có 12 tháng nên length =12
             const a = data[item]?.find((itemFind:any)=> itemFind.thoi_gian === (moment(currentYear).format("YYYY")+"-"+(i+1)))
             newItemData["thang_"+(i+1)] = a?.luong || 0;
