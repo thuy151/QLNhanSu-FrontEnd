@@ -1,24 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import { Avatar, Upload, Col, Form, Row, Space, notification, Radio } from "antd";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Form, Row, Space, notification, TabsProps, Tabs } from "antd";
 import { useTranslation } from "react-i18next";
-import { UserOutlined } from "@ant-design/icons";
 import moment from "moment"
-import ImgCrop from 'antd-img-crop';
 
 import { ReactComponent as Close } from "../../resources/images/close-contained.svg";
-import { ReactComponent as CameraIcon } from "../../resources/images/camera-icon.svg";
 
 import CommonDrawer from "../../components/Common/Drawer";
 import CommonButton from "../../components/Common/Button";
-import CommonFormItem from "../../components/Common/FormItem";
-import CommonForm from "../../components/Common/Form";
-import { DATE_FORMAT, REGEX_EMAIL, REGEX_PHONE_NUMBER } from "../../utils/constants";
 
 import employeeServices, { EmployeeAddParams } from "../../services/employees.service";
-import departmentServices from "../../services/departments.service";
-import certificateServices from "../../services/certificates.service";
-import positionServices from "../../services/positions.service";
 import { useSelector } from "react-redux";
+import EmployeeInfoTab from "./Tabs/EmployeeInfoTab";
+import DepartmentHistory from "./Tabs/DepartmentHistory";
+import PositionHistory from "./Tabs/PositionHistory";
 
 export interface EmployeeCreateDrawerProps {
     visible: boolean,
@@ -32,15 +26,14 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
     const { t } = useTranslation();
     const [isSubmitLoading, setIsSubmitLoading] = useState<boolean>(false);
     const [isChangeAvatar, setIsChangeAvatar] = useState<boolean>(false);
-    const [departmentList, setDepartmentList] = useState<any[]>([]);
-    const [positionList, setPositionList] = useState<any[]>([]);
-    const [certificateList, setCertificateList] = useState<any[]>([]);
+    const [activeKey, setActiveKey] = useState<string>("employee-info");
     const [fileAvatar, setFileAvatar] = useState<any>();
     const [fileAvatarData, setFileAvatarData] = useState<any>(undefined);
     const {
         profile
     } = useSelector((state:any) => state?.profileReducer);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const onFinish = (values: any) => {
         onSubmit(values)
     }
@@ -53,62 +46,8 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
         }
     }, [currentEmployee])
 
-    const getDepartmentData = async () => {
-        const paramsSearch = {
-            currentPageNumber: 0,
-            pageSize: 9999,
-            sortDirection: "name",
-        }
-        const resp = await departmentServices.getPageDepartment(paramsSearch);
-        const data = resp?.data;
-
-        console.log(data)
-        if (resp?.status === 200) {
-            setDepartmentList(data?.content?.map((item:any)=>({value: item.id, label: item.name})))
-        } else {
-            setDepartmentList([])
-        }
-    }
-
-    const getPositionData = async () => {
-        const paramsSearch = {
-            currentPageNumber: 0,
-            pageSize: 9999,
-            sortDirection: "name",
-        }
-        const resp = await positionServices.getPagePosition(paramsSearch);
-        const data = resp?.data;
-
-        console.log(data)
-        if (resp?.status === 200) {
-            setPositionList(data?.content?.map((item:any)=>({value: item.id, label: item.name})))
-        } else {
-            setPositionList([])
-        }
-    }
-
-    const getCertificateData = async () => {
-        const paramsSearch = {
-            currentPageNumber: 0,
-            pageSize: 9999,
-            sortDirection: "name",
-        }        
-        const resp = await certificateServices.getPageCertificate(paramsSearch);
-        const data = resp?.data;
-
-        console.log(data)
-        if (resp?.status === 200) {
-            setCertificateList(data?.content?.map((item:any)=>({value: item.id, label: item.name})))
-        } else {
-            setCertificateList([])
-        }
-    }
-
     useEffect(() => {
         getData();
-        getDepartmentData();
-        getPositionData();
-        getCertificateData();
     }, [getData])
 
     const onSubmit = async (values: any) => {
@@ -172,7 +111,7 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
         setIsSubmitLoading(false)
     }
 
-    const onUploadFile = async (options: any) => {
+    const onUploadFile = useCallback(async (options: any) => {
         if (!options?.file) {
             setFileAvatar(undefined);
             setFileAvatarData(undefined);
@@ -204,7 +143,7 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
         }else{
             setFileAvatarData(options?.file);
         }
-    }
+    },[currentEmployee, t])
 
     const onClose = () => {
         if(isChangeAvatar){
@@ -214,6 +153,39 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
         }
     }
 
+    const items: TabsProps['items'] = useMemo(()=>{
+        const newItems:any[] = [
+            {
+                key: 'employee-info',
+                label: "Thông tin nhân viên",
+                children: <EmployeeInfoTab
+                    form={form}
+                    currentEmployee={currentEmployee} 
+                    onFinish={onFinish}
+                    fileAvatar={fileAvatar}
+                    onUploadFile={onUploadFile}
+                />,
+            },
+        ]
+        if(currentEmployee){
+            newItems.push({
+                key: 'department-history',
+                label: "Lịch sử phòng ban",
+                children: <DepartmentHistory employeeId={currentEmployee?.id}/>,
+            })
+
+            newItems.push({
+                key: 'position-history',
+                label: "Lịch sử chức vụ",
+                children: <PositionHistory employeeId={currentEmployee?.id}/>,
+            })
+        }
+        return newItems;
+    },[currentEmployee, fileAvatar, form, onFinish, onUploadFile])
+
+    const onChange = (key: string) => {
+        setActiveKey(key)
+    };
     return (
         <CommonDrawer
             closable={false}
@@ -256,262 +228,9 @@ const EmployeeCreateDrawer = ({ visible, onAddSuccessful, currentEmployee, reset
                 </Row>
             ]}
         >
-            <CommonForm
-                key="form"
-                form={form}
-                onFinish={onFinish}
-                layout="vertical"
-                initialValues={{
-                    cccd: currentEmployee?.cccd,
-                    gender: currentEmployee ? currentEmployee?.gender : 0,
-                    permanentAddress: currentEmployee?.permanentAddress,
-                    insuranceCode: currentEmployee?.insuranceCode,
-                    hsl: currentEmployee?.hsl,
-                    education: currentEmployee?.education,
-                    name: currentEmployee?.name,
-                    status: currentEmployee ? currentEmployee?.status : true,
-                    address: currentEmployee?.address,
-                    dob: currentEmployee ? moment(currentEmployee?.dob) : undefined,
-                    phoneNumber: currentEmployee?.phoneNumber,
-                    email: currentEmployee?.email,
-                    specialize: currentEmployee?.specialize,
-                    positionId: currentEmployee?.position?.id,
-                    departmentId: currentEmployee?.department?.id,
-                }}
-            >
-                <div className="detail-page-box">
-                    <Row gutter={20}>
-                        <Col span={24}>
-                            <div className="avatar-box-container" style={{paddingTop: 2}}>
-                                <div className="avatar-box">
-                                    {fileAvatar
-                                        ? <Avatar className="avatar" src={fileAvatar} icon={<UserOutlined />} />
-                                        :
-                                        <Avatar className="avatar" icon={<UserOutlined />} />
-                                    }
-                                    <div className="avatar-change-icon">
-                                        <ImgCrop showGrid rotationSlider aspectSlider showReset>
-                                            <Upload
-                                                fileList={[]}
-                                                customRequest={onUploadFile}
-                                            >
-                                                <CameraIcon />
-                                            </Upload>
-                                        </ImgCrop>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="name"
-                                label={t('Họ và tên')}
-                                placeholder={t('Nhập họ và tên') as string}
-                                rules={[
-                                    { whitespace: true, required: true, message: t('Vui lòng nhập Họ và tên') as string }
-                                ]}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="dob"
-                                label={t('Ngày sinh')}
-                                placeholder={t('Nhập ngày sinh') as string}
-                                rules={[
-                                    { required: true, message: t('Vui lòng nhập Ngày sinh') as string }
-                                ]}
-                                type='datePicker'
-                                disabledDate={(current: any) => current > moment().endOf("day")}
-                                showRequiredIcon={true}
-                                format={DATE_FORMAT}
-                            />
-                        </Col>
-
-                    </Row>
-                    <Row gutter={20}>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="phoneNumber"
-                                label={t('Số điện thoại')}
-                                placeholder={t('Nhập số điện thoại') as string}
-                                rules={[
-                                    { pattern: new RegExp(REGEX_PHONE_NUMBER), message: t('Số điện thoại gồm 10 chữ số') as string },
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Số điện thoại') as string }
-                                ]}
-                                maxLength={10}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="gender"
-                                label={t('Giới tính')}
-                            >
-                                <Radio.Group >
-                                    <Radio value={0}>Nam</Radio>
-                                    <Radio value={1}>Nữ</Radio>
-                                </Radio.Group>
-                            </CommonFormItem>
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="cccd"
-                                label={t('Số CCCD')}
-                                placeholder={t('Nhập số CCCD') as string}
-                                rules={[
-                                    { pattern: new RegExp(REGEX_PHONE_NUMBER), message: t('Số CCCD gồm 12 chữ số') as string },
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Số CCCD') as string }
-                                ]}
-                                maxLength={12}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="email"
-                                label={t('Email')}
-                                placeholder={t('Nhập email') as string}
-                                rules={[
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Email') as string },
-                                    { pattern : REGEX_EMAIL, message: "Email phải có dạng 'abc@gmail.com'"}
-                                ]}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="insuranceCode"
-                                label={t('Mã số BHYT')}
-                                placeholder={t('Nhập mã số BHYT') as string}
-                                rules={[
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Mã số BHYT') as string }
-                                ]}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="address"
-                                label={t('Quê quán')}
-                                placeholder={t('Nhập quê quán') as string}
-                                rules={[
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Quê quán') as string }
-                                ]}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="permanentAddress"
-                                label={t('Địa chỉ thường trú')}
-                                placeholder={t('Nhập địa chỉ thường trú') as string}
-                                rules={[
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Địa chỉ thường trú') as string }
-                                ]}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="specialize"
-                                label={t('Chuyên ngành')}
-                                placeholder={t('Nhập chuyên ngành') as string}
-                                rules={[
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Chuyên ngành') as string }
-                                ]}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="education"
-                                label={t('Học vấn')}
-                                placeholder={t('Nhập học vấn') as string}
-                                rules={[
-                                    { required: true, whitespace: true, message: t('Vui lòng nhập Học vấn') as string }
-                                ]}
-                                showRequiredIcon={true}
-                            />
-                        </Col>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="departmentId"
-                                label={t('Phòng ban')}
-                                placeholder={t('Chọn phòng ban') as string}
-                                rules={[
-                                    { required: true,  message: t('Vui lòng nhập Phòng ban') as string }
-                                ]}
-                                showRequiredIcon={true}
-                                type= "select"
-                                options={departmentList}
-                            />
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="positionId"
-                                label={t('Chức vụ')}
-                                placeholder={t('Chọn chức vụ') as string}
-                                rules={[
-                                    { required: true, message: t('Vui lòng nhập Chức vụ') as string }
-                                ]}
-                                showRequiredIcon={true}
-                                type= "select"
-                                options={positionList}
-                            />
-                        </Col>
-                        { !currentEmployee?.id ?
-                            <Col span={12}>
-                                <CommonFormItem
-                                    name="certificateIds"
-                                    label={t('Chứng chỉ')}
-                                    placeholder={t('Chọn chứng chỉ') as string}
-                                    rules={[
-                                        { required: true, message: t('Vui lòng nhập Chứng chỉ') as string }
-                                    ]}
-                                    showRequiredIcon={true}
-                                    type= "select"
-                                    mode="multiple"
-                                    options={certificateList}
-                                />
-                            </Col> :<></>
-                        }
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="hsl"
-                                label={t('Hệ số lương')}
-                                placeholder={t('Nhập hệ số lương') as string}
-                                rules={[
-                                    {required: true, message: t('Vui lòng nhập Hệ số lương') as string }
-                                ]}
-                                showRequiredIcon={true}
-                                type="inputNumber"
-                                min={1.0}
-                            />
-                        </Col>
-                        <Col span={12}>
-                            <CommonFormItem
-                                name="status"
-                                label={t('Trạng thái làm việc')}
-                                valuePropName="checked"
-                                type='switch'
-                            />
-                        </Col>
-                    </Row>
-                </div>
-            </CommonForm>
+            <div className="detail-page-box"> 
+                <Tabs activeKey={activeKey} items={items} onChange={onChange}/>
+            </div>
         </CommonDrawer>
     )
 }

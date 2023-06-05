@@ -83,6 +83,16 @@ class EmployeeServices extends APIService {
             params: params,
         });
     }
+    
+    async getDepartmentByEmployee(id: number,) {
+        return await this.request('GET', `department-emp/find-by-employee?id=${id}`);
+    }
+
+    async getPositionByEmployee(id: number,) {
+        return await this.request('GET', `position-emp/find-by-employee?id=${id}`);
+    }
+
+    
 
 }
 const service = new EmployeeServices();
