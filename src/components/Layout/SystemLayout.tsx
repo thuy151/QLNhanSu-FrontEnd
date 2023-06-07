@@ -186,40 +186,18 @@ function SystemLayout(props: LayoutProps) {
                         navigate(`/salary`)
                     }
                 },
+                {
+                    label: t('Thống kê lương'),
+                    key: 'report-salary',
+                    icon: <div className="sidebar-icon">
+                        <DotIcon />
+                    </div>,
+                    hidden: profile?.scope !== "EMPLOYEE" ? false : true,
+                    onClick: () => {
+                        navigate(`/report-salary`)
+                    },
+                }
             ]
-        },
-        {
-            label: t(' Báo cáo thống kê'),
-            key: 'report-salary',
-            icon: <div className="sidebar-icon">
-                <ReportIcon />
-            </div>,
-            hidden: profile?.scope !== "EMPLOYEE" ? false : true,
-            onClick: () => {
-                navigate(`/report-salary`)
-            },
-            // children: [
-            //     {
-            //         label: t('Thống kê lương'),
-            //         key: 'report-salary',
-            //         icon: <div className="sidebar-icon">
-            //             <DotIcon />
-            //         </div>,
-            //         onClick: () => {
-            //             navigate(`/report-salary`)
-            //         }
-            //     },
-            //     {
-            //         label: t('Thống kê nhân sự'),
-            //         key: 'employee-salary',
-            //         icon: <div className="sidebar-icon">
-            //             <DotIcon />
-            //         </div>,
-            //         onClick: () => {
-            //             navigate(`/employee-salary`)
-            //         }
-            //     },
-            // ]
         },
 
     ], [navigate, profile?.scope, t]);
