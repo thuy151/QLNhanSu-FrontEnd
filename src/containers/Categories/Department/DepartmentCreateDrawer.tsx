@@ -369,7 +369,7 @@ const DepartmentCreateDrawer = ({ visible, onAddSuccessful, currentDepartment, r
                 { currentDepartment ? 
                     <div className="detail-page-box" style={{marginTop: 60}}>
                         <div className="box-title">
-                            {`Danh sách nhân viên trực thuộc phòng ban (${data?.length})`}
+                            {`Danh sách nhân viên trực thuộc (${data?.length})`}
                         </div>
                         <CommonTable
                             rowKey={"id"}
