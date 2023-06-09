@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { buildQueryString } from '../../utils/utilFunctions'
 import { useQuery } from '../../utils/customHooks'
 import { useNavigate } from "react-router-dom";
-import { Row, Col, Form, Space } from "antd";
-import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
+import { Form } from "antd";
 import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as Search } from "../../resources/images/search-1.svg";
 
-import CommonButton from "../../components/Common/Button";
 import CommonForm from "../../components/Common/Form";
 import CommonFormItem from '../../components/Common/FormItem';
 import CommonInput from "../../components/Common/Input";
@@ -75,8 +73,8 @@ function EmployeeSearchBox(props: any) {
     }
 
     return <div className="avic-search-box">
-        {
-            !advance ?
+        {/* {
+            !advance ? */}
                 <div className="normal-search-box">
                     <CommonForm
                         form={form}
@@ -97,7 +95,8 @@ function EmployeeSearchBox(props: any) {
                                         }}
                                         className="open-advance-search-btn"
                                     >
-                                        {t('accountPage.searchBox.label.advancedSearch')} <CaretDownOutlined />
+                                        {t('Tìm kiếm')} 
+                                        {/*<CaretDownOutlined /> */}
                                     </div>
                                 }
                                 addonAfter={
@@ -109,7 +108,7 @@ function EmployeeSearchBox(props: any) {
                         </CommonFormItem>
                     </CommonForm>
                 </div>
-                :
+                {/* :
                 <div className="advance-search-box">
                     <div
                         className="close-advance-search-btn cursor-pointer"
@@ -253,7 +252,7 @@ function EmployeeSearchBox(props: any) {
 
                     </CommonForm>
                 </div>
-        }
+        }*/ }
     </div>
 }
 
