@@ -69,6 +69,7 @@ function SalaryReport() {
                     return item.loai_nhan_vien
                 }),currentYear);
                 setDataSource(dataTable);
+                console.log("dataTable",dataTable)
                 setTotal(calculateTotal(dataTable));
             }else{
                 setDataSource([]);
@@ -240,7 +241,7 @@ function SalaryReport() {
             </div>
     
             <CommonTable
-                rowKey={"id"}
+                rowKey={"employee"}
                 dataSource={dataSource}
                 columns={columns}
                 pagination={false}

@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Row, Col, Form, Space, notification } from "antd";
 import { useTranslation } from 'react-i18next';
 import moment from "moment";
+import { useWatch } from 'antd/es/form/Form';
 
 import CommonButton from "../../../components/Common/Button";
 import CommonForm from "../../../components/Common/Form";
@@ -12,7 +13,6 @@ import CommonFormEditor from '../../../components/Common/FormEditor';
 import employeeServices from "../../../services/employees.service";
 import salaryServices from "../../../services/salaries.service";
 import contractServices from "../../../services/contracts.service";
-import { useWatch } from 'antd/es/form/Form';
 
 function CalculateSalary(props: any) {
     const { t } = useTranslation();
@@ -71,10 +71,49 @@ function CalculateSalary(props: any) {
     },[dataList, empIdWatch,form])
 
     const onFinish = (values: any) => {
+        checkSalaryEmpl(values);
         handleCalculate(values);
     }
 
+    const checkSalaryEmpl = async (values:any) =>{
+        const currentSalary = await salaryServices.getPageSalary({
+            currentPageNumber:0,
+            pageSize:100
+        });
+        const data = currentSalary?.data?.content;
+        if(data){
+            const currentEmp = data?.find((item:any) => item?.employee?.id === values?.empId
+                                                            && item?.month === moment(values?.calculateDate).month()+1
+                                                            && item?.year === moment(values?.calculateDate).year())
+            console.log("currentEmp",currentEmp)   
+            if(currentEmp){
+                return true
+            }                                           
+        }
+        return false;
+    }
+
     const handleCalculate = async (values:any)=>{
+
+        // check xem nhân viên được tính lương ở tháng hiện tại chưa
+        const currentSalary = await salaryServices.getPageSalary({
+            currentPageNumber:0,
+            pageSize:100
+        });
+        const dataCheck = currentSalary?.data?.content;
+        if(dataCheck){
+            const currentEmp = dataCheck?.find((item:any) => item?.employee?.id === values?.empId
+                                                            && item?.month === moment(values?.calculateDate).month()+1
+                                                            && item?.year === moment(values?.calculateDate).year())
+            console.log("currentEmp",currentEmp)   
+            if(currentEmp){
+                notification.error({
+                    message: `Nhân viên '${currentEmp?.employee?.name}' đã được tính lương của tháng ${moment(values?.calculateDate).month()+1} năm ${moment(values?.calculateDate).year()}!`
+                })
+                return;
+            }                                           
+        }
+
         const body = {
             ...values,
             month: moment(values?.calculateDate).month()+1, // vì moment tính month từ 0 (0,1,...11)<=>(tháng 1,....,tháng 12)
@@ -170,6 +209,7 @@ function CalculateSalary(props: any) {
                                     showRequiredIcon={true}
                                     format={"MM/YYYY"}
                                     picker="month"
+                                    disabledDate={(current:any) => current >= moment().endOf('month')}
                                 />
                             </Col>
                             <Col span={24} className={"form-editor-salary"}>
